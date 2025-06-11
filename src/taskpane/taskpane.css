@@ -1,0 +1,59 @@
+/* src/taskpane/taskpane.css */
+
+body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.action-group, .custom-prompt-group, #apiKeySection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ms-Button {
+    width: 100%;
+}
+
+.error-message {
+    color: #a80000;
+    font-weight: bold;
+}
+
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.result-card {
+    background-color: #f3f2f1;
+    border: 1px solid #c8c6c4;
+    padding: 12px;
+    border-radius: 2px;
+}
+
+.result-text {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Consolas', 'Monaco', monospace;
+    background-color: #ffffff;
+    padding: 8px;
+    border-radius: 2px;
+}
+
+.footer {
+    text-align: center;
+    color: #605e5c;
+    margin-top: auto;
+    font-size: 12px;
+}
