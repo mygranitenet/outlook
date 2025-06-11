@@ -7,8 +7,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Gemini Thread Assistant (Vanilla)"/>
   <Description DefaultValue="Use AI to summarize, find actions, and draft replies for email threads. No frameworks."/>
-  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+  <IconUrl DefaultValue="https://mygranitenet.github.io/outlook/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://mygranitenet.github.io/outlook/assets/icon-80.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   
   <!-- VERY IMPORTANT: This tells Outlook that our add-in is allowed to communicate with the Gemini API. -->
@@ -78,12 +78,12 @@
       <!-- All the text strings and URLs used in the UI are defined here for localization. -->
       <Resources>
         <bt:Images>
-          <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
-          <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-          <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+          <bt:Image id="Icon.16x16" DefaultValue="https://mygranitenet.github.io/outlook//assets/icon-16.png"/>
+          <bt:Image id="Icon.32x32" DefaultValue="https://mygranitenet.github.io/outlook/assets/icon-32.png"/>
+          <bt:Image id="Icon.80x80" DefaultValue="https://mygranitenet.github.io/outlook/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
+          <bt:Url id="Taskpane.Url" DefaultValue="https://mygranitenet.github.io/outlook/taskpane.html"/>
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="GroupLabel" DefaultValue="Gemini Tools"/>
