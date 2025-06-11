@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gemini Thread Assistant</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+    
+    <!-- To give our add-in a native look, we'll use the Fluent UI core styling. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+    
+    <!-- Our custom styles -->
+    <link rel="stylesheet" href="taskpane.css" type="text/css" />
+</head>
+<body class="ms-Fabric" dir="ltr">
+    <main id="app-body" class="ms-font-m ms-welcome">
+        <h1 class="ms-fontSize-su">Gemini Thread Assistant</h1>
+
+        <!-- API KEY SECTION -->
+        <div id="apiKeySection">
+            <p>Enter your Google Gemini API Key to begin.</p>
+            <div class="ms-TextField">
+                <label class="ms-Label">Gemini API Key</label>
+                <input class="ms-TextField-field" type="password" id="apiKeyInput" placeholder="Your key is stored securely">
+            </div>
+            <button id="saveKeyButton" class="ms-Button ms-Button--primary"><span class="ms-Button-label">Save Key</span></button>
+            <p id="apiKeyError" class="error-message"></p>
+        </div>
+
+        <!-- MAIN CONTENT SECTION (hidden by default) -->
+        <div id="mainContent" style="display: none;">
+            <div class="action-group">
+                <button id="summarizeButton" class="ms-Button ms-Button--hero"><span class="ms-Button-label">Summarize Thread</span></button>
+                <button id="actionsButton" class="ms-Button ms-Button--hero"><span class="ms-Button-label">Find Action Items</span></button>
+                <button id="replyButton" class="ms-Button ms-Button--hero"><span class="ms-Button-label">Draft Quick Reply</span></button>
+            </div>
+            
+            <div class="custom-prompt-group">
+                <div class="ms-TextField ms-TextField--multiline">
+                    <label class="ms-Label">Custom Request</label>
+                    <textarea id="customPrompt" class="ms-TextField-field" rows="3" placeholder="Or, ask your own question..."></textarea>
+                </div>
+                <button id="customPromptButton" class="ms-Button ms-Button--primary"><span class="ms-Button-label">Ask Gemini</span></button>
+            </div>
+            <button id="changeKeyButton" class="ms-Button"><span class="ms-Button-label">Change API Key</span></button>
+        </div>
+
+        <!-- DYNAMIC CONTENT AREA -->
+        <div id="spinner" class="spinner-container" style="display: none;">
+            <div class="ms-Spinner ms-Spinner--large"></div>
+            <p>Gemini is thinking...</p>
+        </div>
+        <p id="generalError" class="error-message"></p>
+        <div id="resultCard" class="result-card" style="display: none;">
+            <h2 class="ms-fontSize-xl">Gemini's Response</h2>
+            <pre id="resultText" class="result-text"></pre>
+        </div>
+        
+        <footer class="footer">
+            <p>Powered by Google Gemini</p>
+        </footer>
+    </main>
+</body>
+</html>
