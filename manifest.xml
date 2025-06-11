@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailapp="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="MailApp">
+  <!-- Begin Basic Settings: Add-in metadata, icons, and permissions. -->
+  <Id>3d3e876a-5497-48f5-b2f5-c2d9370bcf4e</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Your Company</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Gemini Thread Assistant (Vanilla)"/>
+  <Description DefaultValue="Use AI to summarize, find actions, and draft replies for email threads. No frameworks."/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  
+  <!-- VERY IMPORTANT: This tells Outlook that our add-in is allowed to communicate with the Gemini API. -->
+  <AppDomains>
+    <AppDomain>https://generativelanguage.googleapis.com</AppDomain>
+  </AppDomains>
+
+  <!-- This section specifies that the add-in runs in Outlook. -->
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+
+  <!-- This section requests the permissions our add-in needs to function. -->
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.8"/>
+    </Sets>
+  </Requirements>
+  <Permissions>ReadWriteMailbox</Permissions>
+
+  <!-- Begin Add-in Commands -->
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.8">
+          <bt:Set Name="Mailbox"/>
+        </bt:Sets>
+      </Requirements>
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <!-- This is the area where the add-in's button will appear. -->
+          <DesktopFormFactor>
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="msgReadGroup">
+                  <Label resid="GroupLabel"/>
+                  <!-- This defines the button that will launch the task pane. -->
+                  <Control xsi:type="Button" id="TaskpaneButton">
+                    <Label resid="TaskpaneButton.Label"/>
+                    <Supertip>
+                      <Title resid="TaskpaneButton.Label"/>
+                      <Description resid="TaskpaneButton.Tooltip"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Icon.16x16"/>
+                      <bt:Image size="32" resid="Icon.32x32"/>
+                      <bt:Image size="80" resid="Icon.80x80"/>
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="Taskpane.Url"/>
+                      <Title resid="Taskpane.Title" />
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+      
+      <!-- This rule specifies that our button should only appear when the user is reading a message or appointment. -->
+      <Rule xsi:type="RuleCollection" Mode="Or">
+        <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
+        <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Read" />
+      </Rule>
+
+      <!-- All the text strings and URLs used in the UI are defined here for localization. -->
+      <Resources>
+        <bt:Images>
+          <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
+          <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+          <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="GroupLabel" DefaultValue="Gemini Tools"/>
+          <bt:String id="TaskpaneButton.Label" DefaultValue="Gemini Assistant"/>
+          <bt:String id="Taskpane.Title" DefaultValue="Gemini Thread Assistant" />
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Open the Gemini Assistant to analyze this email thread."/>
+        </bt:LongStrings>
+      </Resources>
+    </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>
